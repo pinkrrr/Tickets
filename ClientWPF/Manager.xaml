@@ -1,0 +1,44 @@
+﻿
+<Window x:Class="ClientWPF.Manager"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Manager" Height="600" Width="900"
+        ResizeMode="NoResize"
+        WindowStyle="ToolWindow"
+        WindowStartupLocation="CenterScreen">
+    <UserControl>
+        <UserControl.Resources>
+            <Style TargetType="{x:Type TextBlock}" x:Key="WrapText">
+                <Setter Property="TextWrapping" Value="Wrap"/>
+            </Style>
+        </UserControl.Resources>
+        <Grid>
+        <Grid Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30*"/>
+                <ColumnDefinition Width="100*"/>
+            </Grid.ColumnDefinitions>
+            <Frame Margin="1"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="Black" BorderThickness="1"></Frame>
+            <DockPanel>
+                <Button Name="Create" FontSize="14" DockPanel.Dock="Top" Height="35" Margin="7,10,7,5" Background="LightGray" BorderBrush="Black" Click="Create_Click">Create</Button>
+                <Button Name="Edit" FontSize="14" DockPanel.Dock="Top" Height="35" Margin="7,5,7,5" Background="LightGray" BorderBrush="Black">Edit</Button>
+                <Button Name="Delete" FontSize="14" DockPanel.Dock="Top" Height="35" Margin="7,5,7,5" Background="LightGray" BorderBrush="Black">Delete</Button>
+                <Button Name="SetupRuns" FontSize="14" DockPanel.Dock="Top" Height="35" Margin="7,5,7,5" Background="LightGray" BorderBrush="Black" Click="SetupRuns_Click">Setup Runs</Button>
+                <Button Name="Logout" FontSize="14" DockPanel.Dock="Bottom" Height="35" VerticalAlignment="Bottom" Margin="7,10" Background="LightGray" BorderBrush="Black" Click="Logout_Click">Logout</Button>
+            </DockPanel>
+                <DataGrid Grid.Column="1" Margin="5" VerticalAlignment="Stretch" Name="List" ItemsSource="{Binding}" SelectedItem="{Binding SelectedPlay}" CanUserAddRows="False" MinRowHeight="40" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="25"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Title" Binding="{Binding Title}" ElementStyle="{StaticResource WrapText}" Width="150"></DataGridTextColumn>
+                        <DataGridTextColumn Header="DateStart" Binding="{Binding DateStart}"  Width="80"></DataGridTextColumn>
+                        <DataGridTextColumn Header="DateEnd" Binding="{Binding DateEnd}"  Width="80"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Days" Binding="{Binding Days}" ElementStyle="{StaticResource WrapText}" Width="150"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Time" Binding="{Binding Time}" ElementStyle="{StaticResource WrapText}" Width="82"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Prices" Binding="{Binding Prices}"  Width="82"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Frame Margin="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="Black" BorderThickness="1"></Frame>
+        </Grid>
+    </Grid>
+    </UserControl>
+</Window>

@@ -1,0 +1,9 @@
+C:\Users\Ostashevsky\Desktop\Tickets\Models\bin\Debug\Models.dll
+C:\Users\Ostashevsky\Desktop\Tickets\Models\bin\Debug\Models.pdb
+C:\Users\Ostashevsky\Desktop\Tickets\Models\obj\Debug\Models.dll
+C:\Users\Ostashevsky\Desktop\Tickets\Models\obj\Debug\Models.pdb
+D:\bodich\Dyplom\Source\Tickets\Models\bin\Debug\Models.dll
+D:\bodich\Dyplom\Source\Tickets\Models\bin\Debug\Models.pdb
+D:\bodich\Dyplom\Source\Tickets\Models\obj\Debug\Models.csprojResolveAssemblyReference.cache
+D:\bodich\Dyplom\Source\Tickets\Models\obj\Debug\Models.dll
+D:\bodich\Dyplom\Source\Tickets\Models\obj\Debug\Models.pdb

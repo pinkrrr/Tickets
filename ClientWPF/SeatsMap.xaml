@@ -1,0 +1,261 @@
+﻿<Window
+        
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="ClientWPF.SeatsMap"
+        
+        Title="SeatsMap" Height="950" Width="1100" 
+        ResizeMode="NoResize"
+        WindowStyle="ToolWindow"
+        WindowStartupLocation="CenterScreen"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        >
+    <Grid>
+        <Grid.Resources>
+            <Style x:Key="lineStyle" TargetType="{x:Type Line}">
+                <Setter Property="Stroke" Value="Gray" />
+                <Setter Property="Stretch" Value="Fill" />
+                <Setter Property="Panel.ZIndex" Value="100" />
+                <Setter Property="StrokeDashArray" Value="1" />
+            </Style>
+            <Style x:Key="horizontalLineStyle" TargetType="{x:Type Line}" BasedOn="{StaticResource lineStyle}">
+                <Setter Property="X2" Value="1" />
+                <Setter Property="VerticalAlignment" Value="Bottom" />
+                <Setter Property="Grid.ColumnSpan" 
+                    Value="{Binding ColumnDefinitions.Count, RelativeSource={RelativeSource AncestorType={x:Type Grid}}}"/>
+            </Style>
+            <Style x:Key="verticalLineStyle" TargetType="{x:Type Line}" BasedOn="{StaticResource lineStyle}">
+                <Setter Property="Y2" Value="1" />
+                <Setter Property="HorizontalAlignment" Value="Right" />
+                <Setter Property="Grid.RowSpan"   
+                    Value="{Binding RowDefinitions.Count, RelativeSource={RelativeSource AncestorType={x:Type Grid}}}"/>
+            </Style>
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200*"/>
+            <ColumnDefinition Width="450*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="90*"/>
+        </Grid.RowDefinitions>
+        <Line Grid.Row="0" Style="{StaticResource horizontalLineStyle}"/>
+        <Grid Grid.ColumnSpan="2" Margin="0">
+            <Button x:Name="Back" Width="150" HorizontalAlignment="Left" Margin="10" FontSize="14" Background="LightGray" BorderBrush="Black" Click="Back_Click" Content="Back"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="7*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="33*"/>
+                <RowDefinition Height="18*"/>
+                <RowDefinition Height="18*"/>
+                <RowDefinition Height="18*"/>
+                <RowDefinition Height="18*"/>
+                <RowDefinition Height="128*"/>
+            </Grid.RowDefinitions>
+
+            <Line Grid.Column="1" Style="{StaticResource verticalLineStyle}" Width="1"/>
+            <Line Grid.Row="0" Style="{StaticResource horizontalLineStyle}" Height="1"/>
+            <Line Grid.Row="1" Style="{StaticResource horizontalLineStyle}" Height="1"/>
+            <Line Grid.Row="2" Style="{StaticResource horizontalLineStyle}" Height="1"/>
+            <Line Grid.Row="3" Style="{StaticResource horizontalLineStyle}" Height="1"/>
+            <Line Grid.Row="4" Style="{StaticResource horizontalLineStyle}" Height="1"/>
+            <Grid>
+                <Line Style="{StaticResource verticalLineStyle}" Width="1"/>
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="TimesNewRoman" FontSize="24" Margin="10"><Run Text="Title"/></TextBlock>
+            </Grid>
+            <TextBlock x:Name="TitleText" TextWrapping="WrapWithOverflow" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" FontFamily="TimesNewRoman" FontSize="24" Margin="10"><Run Text="Play 3"/></TextBlock>
+            <Grid Grid.Row="1">
+                <Line Grid.Column="0" Style="{StaticResource verticalLineStyle}" Width="1"/>
+                <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="TimesNewRoman" FontSize="24" Margin="10"><Run Text="Date"/></TextBlock>
+            </Grid>
+            <TextBlock x:Name="DateText" Grid.Row="1" TextWrapping="WrapWithOverflow" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" FontFamily="TimesNewRoman" FontSize="24" Margin="10"><Run Text="20.06.2016"/></TextBlock>
+            <Grid Grid.Row="2">
+                <Line Grid.Column="0" Style="{StaticResource verticalLineStyle}" Width="1"/>
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="TimesNewRoman" FontSize="24" Margin="10"><Run Text="Time"/></TextBlock>
+            </Grid>
+            <TextBlock x:Name="TimeText" Grid.Row="2" TextWrapping="WrapWithOverflow" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" FontFamily="TimesNewRoman" FontSize="24" Margin="10"><Run Text="16:00"/></TextBlock>
+            <Grid Grid.Row="3">
+                <Line Grid.Column="0" Style="{StaticResource verticalLineStyle}" Width="1"/>
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="TimesNewRoman" FontSize="24" Margin="10"><Run Text="Count"/></TextBlock>
+            </Grid>
+            <TextBlock x:Name="CountText" Text="0" Grid.Row="3" TextWrapping="WrapWithOverflow" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" FontFamily="TimesNewRoman" FontSize="24" Margin="10"/>
+            <Grid Grid.Row="4">
+                <Line Grid.Column="0" Style="{StaticResource verticalLineStyle}" Width="1"/>
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="TimesNewRoman" FontSize="24" Margin="10"><Run Text="Summ"/></TextBlock>
+            </Grid>
+            <TextBlock x:Name="PriceText" Text="0" Grid.Row="4" TextWrapping="WrapWithOverflow" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" FontFamily="TimesNewRoman" FontSize="24" Margin="10"/>
+            <Button x:Name="Sell" Grid.Row="5" Grid.ColumnSpan="2" Margin="20" Height="75" VerticalAlignment="Bottom" FontSize="24" Click="SellClick" Content="Sell"/>
+
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="1" VerticalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="18*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackPanel VerticalAlignment="Stretch" Grid.Column="0">
+                <TextBlock HorizontalAlignment="Center" Text="" FontSize="24" Margin="0,10"/>
+                <ItemsControl x:Name="LeftColumn" ItemsSource="{Binding column1}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Rectangle x:Name="rect" Width="25" Height="25" Stroke="White" Fill="White" Margin="1,2 "/>
+                                <TextBlock x:Name="txtblck" Text="{Binding}" TextAlignment="Center" VerticalAlignment="Center" 
+                           Foreground="Black" FontWeight="Bold" MouseLeftButtonUp="MouseLeftButtonUp" MouseRightButtonUp="MouseRightButtonUp" />
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="1"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+                <TextBlock HorizontalAlignment="Center" Text="" FontSize="24" Margin="0,10"/>
+                <ItemsControl x:Name="LeftColumn1" ItemsSource="{Binding column2}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Rectangle x:Name="rect" Width="25" Height="25" Stroke="White" Fill="White" Margin="1,2 "/>
+                                <TextBlock x:Name="txtblck" Text="{Binding}" TextAlignment="Center" VerticalAlignment="Center" 
+                           Foreground="Black" FontWeight="Bold" MouseLeftButtonUp="MouseLeftButtonUp" MouseRightButtonUp="MouseRightButtonUp" />
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="1"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+                <TextBlock HorizontalAlignment="Center" Text="" FontSize="24" Margin="0,10"/>
+                <ItemsControl x:Name="LeftColumn2" ItemsSource="{Binding column3}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Rectangle x:Name="rect" Width="25" Height="25" Stroke="White" Fill="White" Margin="1,2 "/>
+                                <TextBlock x:Name="txtblck" Text="{Binding}" TextAlignment="Center" VerticalAlignment="Center" 
+                           Foreground="Black" FontWeight="Bold" MouseLeftButtonUp="MouseLeftButtonUp" MouseRightButtonUp="MouseRightButtonUp" />
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="1"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </StackPanel>
+
+            <StackPanel VerticalAlignment="Stretch" Grid.Column="1">
+                <TextBlock HorizontalAlignment="Center" Text="Loggia" FontSize="24" Margin="0,10"/>
+                <ItemsControl x:Name="Loggia" ItemsSource="{Binding Row1}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Rectangle x:Name="rect" Width="25" Height="25" Stroke="Black" Fill="{Binding}" Margin="1,2 "/>
+                                <TextBlock x:Name="txtblck" Text="{Binding Number}" TextAlignment="Center" VerticalAlignment="Center" 
+                           Foreground="Black" FontWeight="Bold" MouseLeftButtonUp="MouseLeftButtonUp" MouseRightButtonUp="MouseRightButtonUp" />
+                            </Grid>
+                            <DataTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="rect" Property="Stroke" Value="Red"/>
+                                </Trigger>
+                                <DataTrigger Binding="{Binding Status}" Value="0">
+                                    <Setter TargetName="rect" Property="Fill" Value="Green"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Status}" Value="1">
+                                    <Setter TargetName="rect" Property="Fill" Value="Red"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Status}" Value="2">
+                                    <Setter TargetName="rect" Property="Fill" Value="Cyan"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Status}" Value="4">
+                                    <Setter TargetName="rect" Property="Fill" Value="Red"/>
+                                </DataTrigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Width="650" Columns="20"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+                <TextBlock HorizontalAlignment="Center" Text="Parterre" FontSize="24" Margin="0,10" />
+                <ItemsControl x:Name="Parterre" ItemsSource="{Binding Row2}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Rectangle x:Name="rect" Width="25" Height="25" Stroke="Black" Fill="{Binding}" Margin="1,2 "/>
+                                <TextBlock x:Name="txtblck" Text="{Binding Number}" TextAlignment="Center" VerticalAlignment="Center" 
+                           Foreground="Black" FontWeight="Bold" MouseLeftButtonUp="MouseLeftButtonUp" MouseRightButtonUp="MouseRightButtonUp" />
+                            </Grid>
+                            <DataTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="rect" Property="Stroke" Value="Red"/>
+                                </Trigger>
+                                <DataTrigger Binding="{Binding Status}" Value="0">
+                                    <Setter TargetName="rect" Property="Fill" Value="Yellow"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Status}" Value="1">
+                                    <Setter TargetName="rect" Property="Fill" Value="Red"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Status}" Value="2">
+                                    <Setter TargetName="rect" Property="Fill" Value="Cyan"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Status}" Value="4">
+                                    <Setter TargetName="rect" Property="Fill" Value="Red"/>
+                                </DataTrigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Width="650" Columns="20"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+                <TextBlock HorizontalAlignment="Center" Text="Balcony" FontSize="24" Margin="0,10" />
+                <ItemsControl x:Name="Balcony" ItemsSource="{Binding Row3}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Rectangle x:Name="rect" Width="25" Height="25" Stroke="Black" Fill="{Binding}" Margin="1,2 "/>
+                                <TextBlock x:Name="txtblck" Text="{Binding Number}" TextAlignment="Center" VerticalAlignment="Center" 
+                           Foreground="Black" FontWeight="Bold" MouseLeftButtonUp="MouseLeftButtonUp" MouseRightButtonUp="MouseRightButtonUp" />
+                            </Grid>
+                            <DataTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="rect" Property="Stroke" Value="Red"/>
+                                </Trigger>
+                                <DataTrigger Binding="{Binding Status}" Value="0">
+                                    <Setter TargetName="rect" Property="Fill" Value="Violet"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Status}" Value="1">
+                                    <Setter TargetName="rect" Property="Fill" Value="Red"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Status}" Value="2">
+                                    <Setter TargetName="rect" Property="Fill" Value="Cyan"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Status}" Value="4">
+                                    <Setter TargetName="rect" Property="Fill" Value="Red"/>
+                                </DataTrigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Width="650" Columns="20"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </StackPanel>
+
+        </Grid>
+    </Grid>
+</Window>

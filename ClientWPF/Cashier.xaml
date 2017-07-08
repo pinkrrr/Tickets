@@ -1,0 +1,31 @@
+﻿<Window x:Class="ClientWPF.Cashier"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Cashier" Height="300" Width="600"
+        ResizeMode="NoResize"
+        WindowStyle="ToolWindow"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="45*"/>
+                <ColumnDefinition Width="100*"/>
+            </Grid.ColumnDefinitions>
+            <Frame Margin="1"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="Black" BorderThickness="1"></Frame>
+            <Frame Margin="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="Black" BorderThickness="1"></Frame>
+            <DockPanel>
+                <DatePicker Name="DateDrop" DockPanel.Dock="Top" Height="35" Margin="7,10,7,5" FontSize="14" VerticalContentAlignment="Center" SelectedDateChanged="DateChanged"></DatePicker>
+                <Button Name="Select" FontSize="14" DockPanel.Dock="Top" Height="35" Margin="7,10,7,5" Background="LightGray" BorderBrush="Black" Click="Select_Click">Select</Button>
+                <Button Name="Logout" FontSize="14" DockPanel.Dock="Bottom" Height="35" VerticalAlignment="Bottom" Margin="7,10" Background="LightGray" BorderBrush="Black" Click="Logout_Click">Logout</Button>
+            </DockPanel>
+            <Grid Grid.Column="1" Margin="7,10" VerticalAlignment="Stretch">
+                <DataGrid CanUserAddRows="False" Name="RunsGrid" ItemsSource="{Binding}" SelectedItem="{Binding SelectedRun}"  VerticalAlignment="Stretch" MinRowHeight="40" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Time" Binding="{Binding Time}" Width="80"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Title" Binding="{Binding Title}"  Width="290"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

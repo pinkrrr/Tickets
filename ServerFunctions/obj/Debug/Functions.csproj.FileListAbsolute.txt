@@ -1,0 +1,10 @@
+C:\Users\Ostashevsky\Desktop\Tickets\Functions\bin\Debug\Functions.dll.config
+C:\Users\Ostashevsky\Desktop\Tickets\Functions\bin\Debug\Functions.dll
+C:\Users\Ostashevsky\Desktop\Tickets\Functions\bin\Debug\Functions.pdb
+C:\Users\Ostashevsky\Desktop\Tickets\Functions\bin\Debug\EntityFramework.dll
+C:\Users\Ostashevsky\Desktop\Tickets\Functions\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Ostashevsky\Desktop\Tickets\Functions\bin\Debug\EntityFramework.xml
+C:\Users\Ostashevsky\Desktop\Tickets\Functions\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Ostashevsky\Desktop\Tickets\Functions\obj\Debug\Functions.csprojResolveAssemblyReference.cache
+C:\Users\Ostashevsky\Desktop\Tickets\Functions\obj\Debug\Functions.dll
+C:\Users\Ostashevsky\Desktop\Tickets\Functions\obj\Debug\Functions.pdb
